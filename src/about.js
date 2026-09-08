@@ -1,98 +1,43 @@
-import gsap from 'gsap';
+import React from 'react';
 
-// Mobile Drawer Navigation
-const toggleBtn = document.querySelector('.mobile-toggle');
-const mobileDrawer = document.querySelector('.mobile-drawer');
-const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-btn');
+export default function About() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-white p-6 md:p-12">
+      <div className="max-w-5xl mx-auto">
+        <h1 className="text-3xl font-black mb-2 text-blue-500">About Alfa Coolers</h1>
+        <p className="text-slate-400 mb-10">Meet the leadership driving Alfa Industries forward with quality and trust.</p>
 
-if (toggleBtn && mobileDrawer) {
-  toggleBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    mobileDrawer.classList.toggle('open');
-  });
+        {/* Leadership Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          {/* Person 1: Kailash Chandra Rajpurohit */}
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col items-center text-center shadow-xl">
+            <div className="w-full h-80 overflow-hidden rounded-xl border border-slate-800 mb-6 bg-slate-800">
+              <img 
+                src="/partner-kailash-chandra.jpg" 
+                alt="Kailash Chandra Rajpurohit" 
+                className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <h3 className="text-xl font-bold text-white">Kailash Chandra Rajpurohit</h3>
+            <p className="text-sm text-blue-400 font-medium mt-1">Founder & Managing Director</p>
+          </div>
 
-  document.addEventListener('click', (e) => {
-    if (!mobileDrawer.contains(e.target) && !toggleBtn.contains(e.target)) {
-      mobileDrawer.classList.remove('open');
-    }
-  });
+          {/* Person 2: Vijay Singh Rajpurohit */}
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col items-center text-center shadow-xl">
+            <div className="w-full h-80 overflow-hidden rounded-xl border border-slate-800 mb-6 bg-slate-800">
+              <img 
+                src="/partner-vijay-singh.jpg" 
+                alt="Vijay Singh Rajpurohit" 
+                className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <h3 className="text-xl font-bold text-white">Vijay Singh Rajpurohit</h3>
+            <p className="text-sm text-blue-400 font-medium mt-1">Operations & Leadership</p>
+          </div>
 
-  drawerLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      mobileDrawer.classList.remove('open');
-    });
-  });
+        </div>
+      </div>
+    </div>
+  );
 }
-
-// Background Videos Continuous Autoplay Boot for Safari/Android
-const allVideos = document.querySelectorAll('.plate-media');
-
-function bootContinuousStream() {
-  allVideos.forEach((vid) => {
-    vid.muted = true;
-    vid.setAttribute('muted', '');
-    vid.playsInline = true;
-    vid.setAttribute('playsinline', '');
-    vid.setAttribute('webkit-playsinline', '');
-    vid.loop = true;
-    vid.removeAttribute('controls');
-
-    const playPromise = vid.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        const unlock = () => {
-          allVideos.forEach((v) => v.play().catch(() => {}));
-          window.removeEventListener('touchstart', unlock);
-          window.removeEventListener('click', unlock);
-        };
-        window.addEventListener('touchstart', unlock, { once: true, passive: true });
-        window.addEventListener('click', unlock, { once: true });
-      });
-    }
-  });
-}
-
-bootContinuousStream();
-
-// 1-by-1 Stage Observer with Screen-Adaptive Threshold
-const isMobile = window.innerWidth <= 1024;
-const snapPlates = document.querySelectorAll('.snap-plate');
-const snapTrack = document.getElementById('snapTrack');
-
-const plateObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    const plate = entry.target;
-    const texts = plate.querySelectorAll('.snap-text');
-    const mask = plate.querySelector('.snap-mask');
-    const media = plate.querySelector('.plate-media');
-
-    if (entry.isIntersecting) {
-      if (texts.length > 0) {
-        gsap.fromTo(texts,
-          { y: 24, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power3.out' }
-        );
-      }
-
-      if (mask) {
-        gsap.fromTo(mask,
-          { opacity: 0, scale: 0.97 },
-          { opacity: 1, scale: 1, duration: 0.65, ease: 'power2.out' }
-        );
-      }
-
-      if (media && media.tagName.toLowerCase() === 'video') {
-        media.play().catch(() => {});
-      }
-    } else {
-      if (!isMobile && media && media.tagName.toLowerCase() === 'video') {
-        media.pause();
-      }
-    }
-  });
-}, {
-  root: isMobile ? null : snapTrack,
-  threshold: isMobile ? 0.2 : 0.45
-});
-
-snapPlates.forEach((plate) => plateObserver.observe(plate));
