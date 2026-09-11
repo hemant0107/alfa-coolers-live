@@ -51,7 +51,7 @@ filterTabs.forEach((tab) => {
   });
 });
 
-// Cursor Ambient Glow Tracker (Active only on mouse devices)
+// Cursor Ambient Glow Tracker
 if (window.matchMedia('(pointer: fine)').matches) {
   allCards.forEach((card) => {
     card.addEventListener('mousemove', (e) => {
@@ -79,22 +79,10 @@ if (window.matchMedia('(pointer: fine)').matches) {
   });
 }
 
-// Safe Fallback SVG Generator (Guarantees zero broken icons if PNG is missing)
-const fallbackSvg = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='4'/%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='3' x2='12' y2='7'/%3E%3Cline x1='12' y1='17' x2='12' y2='21'/%3E%3Cline x1='3' y1='12' x2='7' y2='12'/%3E%3Cline x1='17' y1='12' x2='21' y2='12'/%3E%3C/svg%3E";
-
-document.querySelectorAll('.cooler-render').forEach((img) => {
-  img.addEventListener('error', function () {
-    this.onerror = null;
-    this.src = fallbackSvg;
-    this.style.opacity = '0.5';
-    this.style.padding = '30px';
-  });
-});
-
 // Staggered Entrance on Initial Load
 window.addEventListener('DOMContentLoaded', () => {
   gsap.fromTo('.cooler-card',
     { opacity: 0, y: 20 },
-    { opacity: 1, y: 0, duration: 0.5, stagger: 0.03, ease: 'power3.out', delay: 0.1 }
+    { opacity: 1, y: 0, duration: 0.4, stagger: 0.02, ease: 'power3.out', delay: 0.1 }
   );
 });

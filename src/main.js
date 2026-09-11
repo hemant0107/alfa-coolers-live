@@ -2,7 +2,6 @@ import gsap from 'gsap';
 
 // DOM Selectors
 const snapSlides = document.querySelectorAll('.snap-slide');
-const allVideos = document.querySelectorAll('video');
 const toggleBtn = document.querySelector('.mobile-toggle');
 const mobileDrawer = document.querySelector('.mobile-drawer');
 const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-btn');
@@ -14,14 +13,12 @@ if (toggleBtn && mobileDrawer) {
     mobileDrawer.classList.toggle('open');
   });
 
-  // Close drawer when clicking outside
   document.addEventListener('click', (e) => {
     if (!mobileDrawer.contains(e.target) && !toggleBtn.contains(e.target)) {
       mobileDrawer.classList.remove('open');
     }
   });
 
-  // Close drawer when any nav link is tapped
   drawerLinks.forEach((link) => {
     link.addEventListener('click', () => {
       mobileDrawer.classList.remove('open');
@@ -29,39 +26,11 @@ if (toggleBtn && mobileDrawer) {
   });
 }
 
-// Background Videos Continuous Autoplay Boot
-function bootContinuousStream() {
-  allVideos.forEach((vid) => {
-    vid.muted = true;
-    vid.setAttribute('muted', '');
-    vid.playsInline = true;
-    vid.setAttribute('playsinline', '');
-    vid.setAttribute('webkit-playsinline', '');
-    vid.loop = true;
-    vid.removeAttribute('controls');
-
-    const playPromise = vid.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        const unlock = () => {
-          allVideos.forEach(v => v.play().catch(() => {}));
-          window.removeEventListener('click', unlock);
-          window.removeEventListener('touchstart', unlock);
-        };
-        window.addEventListener('click', unlock, { once: true });
-        window.addEventListener('touchstart', unlock, { once: true, passive: true });
-      });
-    }
-  });
-}
-
-bootContinuousStream();
-
-// Stagger Animation Observer
+// Stagger Animation Observer for Sections
 const isMobile = window.innerWidth <= 992;
 const observerOptions = {
   root: isMobile ? null : document.querySelector('.snap-track'),
-  threshold: isMobile ? 0.2 : 0.45
+  threshold: isMobile ? 0.15 : 0.4
 };
 
 const snapObserver = new IntersectionObserver((entries) => {
@@ -70,13 +39,8 @@ const snapObserver = new IntersectionObserver((entries) => {
     const texts = slide.querySelectorAll('.snap-text');
     const mask = slide.querySelector('.snap-mask');
     const entriesElements = slide.querySelectorAll('.snap-entry');
-    const slideVid = slide.querySelector('video');
 
     if (entry.isIntersecting) {
-      if (slideVid) {
-        slideVid.play().catch(() => {});
-      }
-
       if (mask) {
         gsap.fromTo(mask,
           { opacity: 0, scale: 0.98 },

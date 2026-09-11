@@ -1,9 +1,3 @@
-/* ====================================================
-   ALFA COOLERS - MAGNETIC ARCHITECTURAL ABOUT THEME
-   Universal Cross-Device Engine (Desktop, MacBook, iPhone, Android)
-   Optimized Navbar Logo Proportion & Viewport Geometry
-==================================================== */
-
 html, body.about-snap-root {
   background-color: #dcdde0 !important;
   color: #0f172a !important;
@@ -18,9 +12,6 @@ html, body.about-snap-root {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ----------------------------------------------------
-   HEADER & NAVBAR LOGO SCALING (INCREASED PROPORTION)
----------------------------------------------------- */
 .navbar-wrapper {
   position: fixed;
   top: 16px;
@@ -57,7 +48,6 @@ html, body.about-snap-root {
   text-decoration: none;
 }
 
-/* Proportional Logo Size for 58px Navbar */
 .brand-logo {
   height: 38px;
   width: auto;
@@ -79,9 +69,6 @@ html, body.about-snap-root {
   color: #0f172a;
 }
 
-/* ----------------------------------------------------
-   SNAP RAIL & VIEWPORT ENGINE
----------------------------------------------------- */
 .snap-track {
   width: 100%;
   height: 100vh;
@@ -94,7 +81,6 @@ html, body.about-snap-root {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Viewport Section */
 .snap-plate {
   width: 100%;
   height: 100vh;
@@ -111,7 +97,6 @@ html, body.about-snap-root {
   position: relative;
 }
 
-/* Central Plate Card */
 .plate-card {
   width: 100%;
   max-width: 1360px;
@@ -146,7 +131,6 @@ html, body.about-snap-root {
   grid-template-columns: 1fr 1.2fr;
 }
 
-/* Editorial Side */
 .card-editorial {
   display: flex;
   flex-direction: column;
@@ -199,7 +183,6 @@ html, body.about-snap-root {
   font-weight: 500;
 }
 
-/* Governance Pill Row */
 .governance-pill-row {
   display: flex;
   flex-wrap: wrap;
@@ -227,7 +210,6 @@ html, body.about-snap-root {
   background-color: #2563eb;
 }
 
-/* Partners Photo Showcase Grid */
 .partners-showcase-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -249,7 +231,7 @@ html, body.about-snap-root {
   position: relative;
   width: 100%;
   height: clamp(240px, 32vh, 360px);
-  background: #0f172a;
+  background: #f1f5f9; /* Updated to light background */
   overflow: hidden;
 }
 
@@ -263,42 +245,6 @@ html, body.about-snap-root {
 
 .partner-frame:hover .partner-photo {
   transform: scale(1.05);
-}
-
-.photo-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 24px;
-  box-sizing: border-box;
-  background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
-  border: 2px dashed rgba(255, 255, 255, 0.15);
-}
-
-.ph-icon {
-  font-size: 32px;
-  margin-bottom: 10px;
-  opacity: 0.6;
-}
-
-.ph-title {
-  font-size: 11.5px;
-  font-weight: 900;
-  letter-spacing: 1.5px;
-  color: #ffffff;
-  margin-bottom: 6px;
-}
-
-.ph-sub {
-  font-size: 9.5px;
-  font-weight: 800;
-  letter-spacing: 1.2px;
-  color: #38bdf8;
-  font-family: monospace;
 }
 
 .partner-tag {
@@ -336,7 +282,6 @@ html, body.about-snap-root {
   font-weight: 600;
 }
 
-/* Minimal Stat Dock */
 .stat-dock-minimal {
   display: flex;
   align-items: center;
@@ -371,7 +316,6 @@ html, body.about-snap-root {
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* Feature Bullets */
 .feature-bullets {
   list-style: none;
   padding: 0;
@@ -400,7 +344,6 @@ html, body.about-snap-root {
   flex-shrink: 0;
 }
 
-/* Dispatch Stats Dock */
 .dispatch-stats-dock {
   display: flex;
   align-items: center;
@@ -437,7 +380,6 @@ html, body.about-snap-root {
   background: rgba(255, 255, 255, 0.12);
 }
 
-/* Dynamic Video Viewports */
 .card-visual {
   width: 100%;
   height: 100%;
@@ -454,12 +396,12 @@ html, body.about-snap-root {
   border-radius: 22px;
   overflow: hidden;
   box-shadow: 0 20px 48px rgba(15, 23, 42, 0.12);
-  background: #0f172a;
+  background: #f1f5f9; /* Changed from dark to clean light placeholder background */
 }
 
 .visual-viewport.live-video-window {
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.1);
 }
 
 .plate-media {
@@ -467,17 +409,12 @@ html, body.about-snap-root {
   height: 100%;
   object-fit: cover;
   display: block;
-  pointer-events: none !important;
-}
-
-video::-webkit-media-controls {
-  display: none !important;
 }
 
 .viewport-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.05) 0%, rgba(15, 23, 42, 0.35) 100%);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.02) 0%, rgba(15, 23, 42, 0.15) 100%);
   pointer-events: none;
 }
 
@@ -536,9 +473,6 @@ video::-webkit-media-controls {
   100% { transform: translateY(-100%); }
 }
 
-/* ----------------------------------------------------
-   FOOTER STAGE
----------------------------------------------------- */
 .footer-snap-plate {
   height: 100vh;
   height: 100dvh;
@@ -575,7 +509,6 @@ video::-webkit-media-controls {
   gap: 14px;
 }
 
-/* Proportional Footer Logo */
 .footer-logo {
   height: 34px;
   width: auto;
@@ -694,13 +627,10 @@ video::-webkit-media-controls {
   letter-spacing: 1.5px;
 }
 
-/* ----------------------------------------------------
-   Universal Cross-Device Responsive Rules
----------------------------------------------------- */
 @media (max-width: 1024px) {
   .snap-track {
-    scroll-snap-type: none;
-    overflow-y: auto;
+    scroll-snap-type: none !important;
+    overflow-y: auto !important;
   }
 
   .snap-plate {
@@ -744,7 +674,7 @@ video::-webkit-media-controls {
   }
 }
 
-@media (max-width: 640px) {
+@media (Maks-width: 640px) {
   .brand-logo {
     height: 30px;
   }

@@ -9,7 +9,6 @@
 
 /* ----------------------------------------------------
    1. Universal Dynamic Snapping Engine
-   Fixes: 100dvh support for iPhone & Android dynamic URL bars
 ---------------------------------------------------- */
 html, body {
   width: 100%;
@@ -50,7 +49,7 @@ html, body {
 }
 
 /* ----------------------------------------------------
-   2. Floating Sticky Navbar (Logo Scaling Included)
+   2. Floating Sticky Navbar
 ---------------------------------------------------- */
 .navbar-wrapper {
   position: fixed;
@@ -88,7 +87,6 @@ html, body {
   text-decoration: none;
 }
 
-/* Proportional Logo Size for 58px Navbar */
 .brand-logo {
   height: 38px;
   width: auto;
@@ -315,16 +313,16 @@ html, body {
   border-radius: 20px;
   overflow: hidden;
   position: relative;
-  background-color: #0f172a;
+  background-color: #f1f5f9; /* Updated to clean light background */
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
 }
 
-.media-window video {
+.media-window img.media-anim,
+.dispatch-anim {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  pointer-events: none !important;
 }
 
 /* ----------------------------------------------------
@@ -486,14 +484,7 @@ html, body {
   overflow: hidden;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
   height: 320px;
-  background: #0f172a;
-}
-
-.dispatch-vid {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  background: #f1f5f9; /* Updated to clean light background */
 }
 
 .media-tag {
@@ -558,7 +549,6 @@ html, body {
   margin-bottom: 16px;
 }
 
-/* Proportional Footer Logo */
 .footer-logo {
   height: 34px;
   width: auto;
@@ -675,7 +665,7 @@ html, body {
 }
 
 /* ----------------------------------------------------
-   6. Universal Cross-Device Responsive Engine
+   6. Responsive Engine
 ---------------------------------------------------- */
 @media (max-width: 1024px) {
   .snap-track {
