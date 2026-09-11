@@ -1,9 +1,26 @@
 {
-  "public": ".",
+  "public": "dist",
   "cleanUrls": true,
-  "rewrites": [
-    { "source": "/about", "destination": "/about.html" },
-    { "source": "/products", "destination": "/products.html" },
-    { "source": "/contact", "destination": "/contact.html" }
+  "redirects": [
+    {
+      "from": "/about",
+      "to": "/about.html",
+      "status": 200
+    },
+    {
+      "from": "/products",
+      "to": "/products.html",
+      "status": 200
+    },
+    {
+      "from": "/contact",
+      "to": "/contact.html",
+      "status": 200
+    },
+    {
+      "from": "/*",
+      "to": "/index.html",
+      "status": 200
+    }
   ]
 }

@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
@@ -12,6 +12,9 @@ const firebaseConfig = {
   measurementId: "G-0L9VEQE163"
 };
 
-const app = initializeApp(firebaseConfig);
+// Initialize Firebase safely (prevents duplicate app initialization error during hot-reloads)
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+export default app;
