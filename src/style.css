@@ -189,6 +189,15 @@ html, body {
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
+/* Mobile Toggle Cross (X) Animation when active */
+.mobile-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-toggle.active span:nth-child(2) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 .mobile-drawer {
   pointer-events: auto;
   width: 100%;
@@ -313,7 +322,7 @@ html, body {
   border-radius: 20px;
   overflow: hidden;
   position: relative;
-  background-color: #f1f5f9; /* Updated to clean light background */
+  background-color: #f1f5f9;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
 }
 
@@ -484,7 +493,7 @@ html, body {
   overflow: hidden;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
   height: 320px;
-  background: #f1f5f9; /* Updated to clean light background */
+  background: #f1f5f9;
 }
 
 .media-tag {
@@ -617,7 +626,7 @@ html, body {
   font-size: 13px;
   font-weight: 500;
   transition: color 0.2s ease, transform 0.2s ease;
-  display: inline-block;
+  display: inline-link;
 }
 
 .footer-link:hover {
