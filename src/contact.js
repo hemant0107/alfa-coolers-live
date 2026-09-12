@@ -9,17 +9,20 @@ if (toggleBtn && mobileDrawer) {
   toggleBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     mobileDrawer.classList.toggle('open');
+    toggleBtn.classList.toggle('active');
   });
 
   document.addEventListener('click', (e) => {
     if (!mobileDrawer.contains(e.target) && !toggleBtn.contains(e.target)) {
       mobileDrawer.classList.remove('open');
+      toggleBtn.classList.remove('active');
     }
   });
 
   drawerLinks.forEach((link) => {
     link.addEventListener('click', () => {
       mobileDrawer.classList.remove('open');
+      toggleBtn.classList.remove('active');
     });
   });
 }
