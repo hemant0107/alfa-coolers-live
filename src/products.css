@@ -70,8 +70,26 @@ html, body.products-gallery-body {
   color: #0f172a;
 }
 
-/* Mobile Toggle Cross (X) Animation when active */
+/* Mobile Toggle Cross (X) Animation & Display Fix */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+}
+
 .mobile-toggle span {
+  width: 20px;
+  height: 2px;
+  background-color: #0f172a;
+  border-radius: 2px;
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
@@ -81,6 +99,50 @@ html, body.products-gallery-body {
 
 .mobile-toggle.active span:nth-child(2) {
   transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-drawer {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  margin-top: 8px;
+  display: none;
+  flex-direction: column;
+  padding: 20px;
+  gap: 14px;
+}
+
+.mobile-drawer.open {
+  display: flex;
+}
+
+.drawer-link {
+  color: #475569;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.drawer-link.active {
+  color: #2563eb;
+}
+
+.drawer-btn {
+  text-align: center;
+  padding: 12px;
+  background: #0f172a;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 800;
+  border-radius: 12px;
+  display: block;
 }
 
 .gallery-stage {
@@ -521,6 +583,14 @@ html, body.products-gallery-body {
 }
 
 @media (max-width: 768px) {
+  .nav-menu, .btn-dealer {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: flex;
+  }
+
   .gallery-stage {
     padding: 100px 16px 50px;
   }

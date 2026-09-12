@@ -626,7 +626,7 @@ html, body {
   font-size: 13px;
   font-weight: 500;
   transition: color 0.2s ease, transform 0.2s ease;
-  display: inline-link;
+  display: inline-block;
 }
 
 .footer-link:hover {
