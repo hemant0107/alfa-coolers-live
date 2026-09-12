@@ -855,7 +855,6 @@
     </section>
   </main>
 
-  <!-- Consistent Architectural Footer -->
   <footer class="architectural-footer">
     <div class="footer-container">
       <div class="footer-grid">
@@ -916,33 +915,5 @@
   </footer>
 
   <script type="module" src="./src/products.js"></script>
-  <!-- Robust Mobile Drawer Script -->
-  <script>
-    const toggleBtn = document.querySelector('.mobile-toggle');
-    const mobileDrawer = document.getElementById('mobileDrawer');
-    const drawerLinks = document.querySelectorAll('.mobile-drawer a');
-
-    if (toggleBtn && mobileDrawer) {
-      toggleBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        mobileDrawer.classList.toggle('open');
-        toggleBtn.classList.toggle('active');
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!mobileDrawer.contains(e.target) && !toggleBtn.contains(e.target)) {
-          mobileDrawer.classList.remove('open');
-          toggleBtn.classList.remove('active');
-        }
-      });
-
-      drawerLinks.forEach((link) => {
-        link.addEventListener('click', () => {
-          mobileDrawer.classList.remove('open');
-          toggleBtn.classList.remove('active');
-        });
-      });
-    }
-  </script>
 </body>
 </html>

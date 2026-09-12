@@ -1,35 +1,35 @@
 import gsap from 'gsap';
 
-// DOM Selectors
-const snapSlides = document.querySelectorAll('.snap-slide');
-const toggleBtn = document.querySelector('.mobile-toggle');
-const mobileDrawer = document.querySelector('.mobile-drawer');
-const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-btn');
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.querySelector('.mobile-toggle');
+  const mobileDrawer = document.getElementById('mobileDrawer');
+  const drawerLinks = document.querySelectorAll('.mobile-drawer a, .drawer-link');
 
-// Mobile Drawer Toggle & Outside Click Dismiss
-if (toggleBtn && mobileDrawer) {
-  toggleBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    mobileDrawer.classList.toggle('open');
-    toggleBtn.classList.toggle('active');
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!mobileDrawer.contains(e.target) && !toggleBtn.contains(e.target)) {
-      mobileDrawer.classList.remove('open');
-      toggleBtn.classList.remove('active');
-    }
-  });
-
-  drawerLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      mobileDrawer.classList.remove('open');
-      toggleBtn.classList.remove('active');
+  if (toggleBtn && mobileDrawer) {
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileDrawer.classList.toggle('open');
+      toggleBtn.classList.toggle('active');
     });
-  });
-}
+
+    document.addEventListener('click', (e) => {
+      if (!mobileDrawer.contains(e.target) && !toggleBtn.contains(e.target)) {
+        mobileDrawer.classList.remove('open');
+        toggleBtn.classList.remove('active');
+      }
+    });
+
+    drawerLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileDrawer.classList.remove('open');
+        toggleBtn.classList.remove('active');
+      });
+    });
+  }
+});
 
 // Stagger Animation Observer for Sections
+const snapSlides = document.querySelectorAll('.snap-slide');
 const isMobile = window.innerWidth <= 992;
 const observerOptions = {
   root: isMobile ? null : document.querySelector('.snap-track'),

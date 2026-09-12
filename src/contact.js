@@ -1,31 +1,32 @@
 import gsap from 'gsap';
 
-// Mobile Drawer Navigation Toggle & Dismiss
-const toggleBtn = document.querySelector('.mobile-toggle');
-const mobileDrawer = document.querySelector('.mobile-drawer');
-const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-btn');
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.querySelector('.mobile-toggle');
+  const mobileDrawer = document.getElementById('mobileDrawer');
+  const drawerLinks = document.querySelectorAll('.mobile-drawer a, .drawer-link');
 
-if (toggleBtn && mobileDrawer) {
-  toggleBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    mobileDrawer.classList.toggle('open');
-    toggleBtn.classList.toggle('active');
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!mobileDrawer.contains(e.target) && !toggleBtn.contains(e.target)) {
-      mobileDrawer.classList.remove('open');
-      toggleBtn.classList.remove('active');
-    }
-  });
-
-  drawerLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      mobileDrawer.classList.remove('open');
-      toggleBtn.classList.remove('active');
+  if (toggleBtn && mobileDrawer) {
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileDrawer.classList.toggle('open');
+      toggleBtn.classList.toggle('active');
     });
-  });
-}
+
+    document.addEventListener('click', (e) => {
+      if (!mobileDrawer.contains(e.target) && !toggleBtn.contains(e.target)) {
+        mobileDrawer.classList.remove('open');
+        toggleBtn.classList.remove('active');
+      }
+    });
+
+    drawerLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileDrawer.classList.remove('open');
+        toggleBtn.classList.remove('active');
+      });
+    });
+  }
+});
 
 // Form Interactive Pill Selectors
 function setupPillSelector(containerId) {
@@ -58,7 +59,7 @@ if (dealerForm) {
     const notes = document.getElementById('inquiryNotes').value.trim();
 
     const activeSegment = document.querySelector('#segmentSelector .select-pill.active')?.getAttribute('data-value') || 'Fiber Series (21 Models)';
-    const activeVolume = document.querySelector('#volumeSelector .select-pill.active')?.getAttribute('data-value') || 'Wholesale Lot';
+    const activeVolume = document.querySelector('#volumeSelector .select-pill.active')?.getAttribute('data-value') === 'Full Truck Load (FTL Dispatch)' ? 'Full Truck Load (FTL Dispatch)' : 'Wholesale Lot';
 
     const message = `*NEW DEALER INQUIRY // ALFA COOLERS*%0A%0A` +
       `*Contact Person:* ${encodeURIComponent(name)}%0A` +
